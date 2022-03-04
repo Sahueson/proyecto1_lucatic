@@ -2,8 +2,12 @@ package proyecto1_lucatic.control;
 
 import proyecto1_lucatic.gui.Menu;
 import proyecto1_lucatic.utilidades.Datos;
+import proyecto1_lucatic.servicios.LucasteamService;
+import proyecto1_lucatic.servicios.LucasteamServiceImpl;
 
 public class Lucasteam {
+	
+	private LucasteamService services = new LucasteamServiceImpl();
 
     public void abrirLucasteam() {
         boolean seguir = true;
@@ -21,43 +25,23 @@ public class Lucasteam {
         try {
             switch (Datos.recogeInt()) {
                 case 1:
-                    //ALTA DE UN PRODUCTO
-                    services.AddProducto();
+                    //IMPORTAR LISTADO DE JUEGOS
+                    services.setListado();
                     break;
 
                 case 2:
-                    //ELIMINAR UN PRODUCTO
-                    services.eliminarProducto();
+                    //LISTAR TODOS LOS JUEGOS
+                    services.listarJuegos();
                     break;
 
                 case 3:
-                    //LISTAR PRODUCTOS
-                    services.ListarProductos();
+                    //FILTRAR POR GENERO PLATAFORMA
+                    services.filtrarByGenrePlatform();
                     break;
 
                 case 4:
-                    //INDICAR CANTIDADES DE UN PRODUCTO
-                    services.CantidadesProducto();
-                    break;
-
-                case 5:
-                    //LISTADO DE PRODUCTOS CON EXISTENCIAS MENORES DE 5
-                    services.CantidadesMenores(5);
-                    break;
-
-                case 6:
-                    //CASOS DE PRUEBA
-                    services.CasosDePrueba();
-                    break;
-
-                case 7:
-                    //SERIALIZAR
-                    services.serializarStock();
-                    break;
-
-                case 8:
-                    //DESERIALIZAR
-                    services.deSerializarStock();
+                    //DAR DE ALTA UN JUEGO
+                    services.addJuego();
                     break;
 
                 case 0:
